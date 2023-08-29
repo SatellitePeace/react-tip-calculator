@@ -1,13 +1,145 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+body {
+  background-color: hsl(185, 41%, 84%);
+  min-height: 100vh;
+  font-family: monospace;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+.app-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+label {
+  display: block;
+  margin: 2rem 0 0.7rem 0;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.grey-input {
+  background-color: hsl(185, 41%, 84%);
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 7px;
+}
+.tips-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.tip-input {
+  background-color: hsl(183, 100%, 15%);
+  display: block;
+  padding: 0.8rem 0;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  max-width: 10rem;
+  color: hsl(189, 41%, 97%);
+}
+.tip-input-custom {
+  background-color: hsl(189, 41%, 97%);
+  background-color: hsl(185, 41%, 84%);
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 7px;
+  max-width: 10rem;
+  padding: 0.8rem;
+}
+.tip-input-custom::placeholder {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: hsl(183, 100%, 15%);
+}
+.app-section {
+  background-color: hsl(0, 0%, 100%);
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 4rem;
+}
+.output-container {
+  padding: 2rem;
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+article {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+h3 {
+  font-size: 2rem;
+  color: hsl(172, 67%, 45%);
+}
+p {
+  font-size: 1.5rem;
+  color: hsl(0, 0%, 100%);
+  line-height: 2rem;
+}
+span {
+  color: hsl(184, 14%, 56%);
+}
+.reset {
+  width: 100%;
+  padding: 0.9rem;
+
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(186, 14%, 43%);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+  .app-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3rem;
+    width: 60vw;
+  }
+  .output-container {
+    padding: 2rem;
+    background-color: hsl(183, 100%, 15%);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+/* ### Primary
+
+
+
+- Very dark cyan: hsl(183, 100%, 15%)
+- Dark grayish cyan: hsl(186, 14%, 43%)
+- Grayish cyan: hsl(184, 14%, 56%)
+- Light grayish cyan: hsl(185, 41%, 84%)
+- Very light grayish cyan: hsl(189, 41%, 97%)
+- White: hsl(0, 0%, 100%)
+
+## Typography
+
+### Font */
