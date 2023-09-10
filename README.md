@@ -15,8 +15,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- GitHub URL: [Github]([https://64fdb14386678711ad17be76--tipcalulatorreactprac.netlify.app/)](https://github.com/SatellitePeace/react-tip-calculator/)
+- Live Site URL: [live site URL](https://your-live-site-url.com)
 
 ## My process
 
