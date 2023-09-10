@@ -9,30 +9,47 @@ body {
   background-color: hsl(185, 41%, 84%);
   min-height: 100vh;
   font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
 }
-
+h1 {
+  margin-bottom: -3rem;
+}
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.app-section {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+main{
+  margin: 2rem;
 }
 label {
   display: block;
   margin: 2rem 0 0.7rem 0;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 .grey-input {
+  font-family: inherit;
   background-color: hsl(185, 41%, 84%);
   width: 100%;
   padding: 0.8rem;
   border-radius: 7px;
+  font-size: 1.2rem;
+  text-align: right;
+  transition: 0.1s;
+}
+.grey-input::placeholder {
+  font-family: monospace;
+  font-size: 1.4rem;
+  color: hsl(184, 14%, 56%);
+}
+.grey-input:focus{
+  border: 2px solid hsl(172, 67%, 45%);
 }
 .tips-container {
   display: grid;
@@ -42,7 +59,7 @@ label {
 .tip-input {
   background-color: hsl(183, 100%, 15%);
   display: block;
-  padding: 0.8rem 0;
+  padding: 0.5rem 0;
   text-align: center;
   border-radius: 7px;
   font-size: 1.2rem;
@@ -50,27 +67,69 @@ label {
   letter-spacing: 1px;
   max-width: 10rem;
   color: hsl(189, 41%, 97%);
+  cursor: pointer;
 }
 .tip-input-custom {
-  background-color: hsl(189, 41%, 97%);
   background-color: hsl(185, 41%, 84%);
-  text-align: center;
+  text-align: right;
   font-size: 1.2rem;
   border-radius: 7px;
   max-width: 10rem;
   padding: 0.8rem;
+  font-family: inherit;
+}
+.dollar, .person {
+  position: relative;
+}
+
+.input {
+  position: absolute;
+  left: 4%;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .tip-input-custom::placeholder {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: hsl(183, 100%, 15%);
+  text-align: center;
+}
+.tip-input-custom:focus {
+  border: 2px solid hsl(172, 67%, 45%);
+}
+.count {
+  display: flex;
+  justify-content: space-between;
+}
+.error {
+  display: none;
+}
+.error-msg {
+  color: red;
+}
+.show {
+  border: 2px solid red;
+}
+.show:focus{
+  border: 2px solid red;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 .app-section {
   background-color: hsl(0, 0%, 100%);
   padding: 2rem;
   border-radius: 1rem;
-  margin: 4rem;
+  margin: 4rem 0;
+  width: 90vw;
 }
 .output-container {
   padding: 2rem;
@@ -79,6 +138,8 @@ label {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  justify-content: space-between;
+  margin-top: 2rem;
 }
 article {
   display: flex;
@@ -87,39 +148,60 @@ article {
   gap: 3rem;
 }
 h3 {
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: hsl(172, 67%, 45%);
+}
+.tip-amount p, .total p{
+  font-size: 1.2rem;
 }
 p {
   font-size: 1.5rem;
   color: hsl(0, 0%, 100%);
   line-height: 2rem;
+  transition: .2s;
+  max-width: 10rem;
+}
+.tips-container p:hover{
+  background: hsl(185, 41%, 84%);
 }
 span {
   color: hsl(184, 14%, 56%);
 }
+.selected {
+  background: hsl(172, 67%, 45%);
+  /* background-color: hsl(185, 41%, 84%); */
+}
 .reset {
   width: 100%;
-  padding: 0.9rem;
-
+  padding: 0.7rem;
   border-radius: 7px;
   cursor: pointer;
   font-weight: 700;
   font-size: 1.2rem;
   color: hsl(183, 100%, 15%);
-  background-color: hsl(186, 14%, 43%);
+  /* background-color: hsl(186, 14%, 43%); */
+  transition: 0.2s;
 }
-@media screen and (min-width: 800px) {
+.reset:not(:disabled){
+  background: hsl(172, 67%, 45%);
+}
+
+.reset:hover {
+  background: hsl(185, 41%, 84%);
+}
+@media screen and (min-width: 700px) {
   h1 {
     font-size: 3rem;
   }
   .app-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     gap: 3rem;
-    width: 60vw;
+    width: 70vw;
   }
+  .tips-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .output-container {
     padding: 2rem;
     background-color: hsl(183, 100%, 15%);
@@ -127,19 +209,30 @@ span {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    margin-top: 1.5rem;
   }
 }
-/* ### Primary
 
+@media screen and (min-width: 900px) {
+  .app-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80vw;
+  }
+  .tip-input-custom {
+    width: 6rem;
+  }
 
+  .tip-input-custom::placeholder {
+    font-size: 1rem;
+  }
+}
 
-- Very dark cyan: hsl(183, 100%, 15%)
-- Dark grayish cyan: hsl(186, 14%, 43%)
-- Grayish cyan: hsl(184, 14%, 56%)
-- Light grayish cyan: hsl(185, 41%, 84%)
-- Very light grayish cyan: hsl(189, 41%, 97%)
-- White: hsl(0, 0%, 100%)
-
-## Typography
-
-### Font */
+@media screen and (min-width: 1100px) {
+  .app-section {
+    width: 60vw;
+  }
+ p, .tip-input-custom {
+    width: 6rem;
+  }
+}
